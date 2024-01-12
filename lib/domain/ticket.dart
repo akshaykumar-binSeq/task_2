@@ -11,7 +11,7 @@ abstract class Ticket implements _$Ticket {
 
   const factory Ticket({
     required String id,
-    required Title title,
+    required TicketTitle title,
     required Description description,
     required StringSingleLine location,
     required DateToday createdAt,
@@ -20,7 +20,7 @@ abstract class Ticket implements _$Ticket {
 
   factory Ticket.empty() => Ticket(
       id: '',
-      title: Title(''),
+      title: TicketTitle(''),
       description: Description(''),
       location: StringSingleLine(''),
       createdAt: DateToday(DateTime.now().toIso8601String()),

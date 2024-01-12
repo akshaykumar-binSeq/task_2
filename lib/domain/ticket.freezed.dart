@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Ticket {
   String get id => throw _privateConstructorUsedError;
-  Title get title => throw _privateConstructorUsedError;
+  TicketTitle get title => throw _privateConstructorUsedError;
   Description get description => throw _privateConstructorUsedError;
   StringSingleLine get location => throw _privateConstructorUsedError;
   DateToday get createdAt => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $TicketCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      Title title,
+      TicketTitle title,
       Description description,
       StringSingleLine location,
       DateToday createdAt,
@@ -69,7 +69,7 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as Title,
+              as TicketTitle,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$$TicketImplCopyWith<$Res> implements $TicketCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      Title title,
+      TicketTitle title,
       Description description,
       StringSingleLine location,
       DateToday createdAt,
@@ -132,7 +132,7 @@ class __$$TicketImplCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as Title,
+              as TicketTitle,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ class _$TicketImpl extends _Ticket {
   @override
   final String id;
   @override
-  final Title title;
+  final TicketTitle title;
   @override
   final Description description;
   @override
@@ -214,7 +214,7 @@ class _$TicketImpl extends _Ticket {
 abstract class _Ticket extends Ticket {
   const factory _Ticket(
       {required final String id,
-      required final Title title,
+      required final TicketTitle title,
       required final Description description,
       required final StringSingleLine location,
       required final DateToday createdAt,
@@ -224,7 +224,7 @@ abstract class _Ticket extends Ticket {
   @override
   String get id;
   @override
-  Title get title;
+  TicketTitle get title;
   @override
   Description get description;
   @override

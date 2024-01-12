@@ -20,6 +20,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue, int min) minimumLength,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue, num max) numberTooLarge,
@@ -30,6 +31,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue, int min)? minimumLength,
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue, num max)? numberTooLarge,
@@ -40,6 +42,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue, int min)? minimumLength,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue, num max)? numberTooLarge,
@@ -51,6 +54,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(MinimumLength<T> value) minimumLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(NumberTooLarge<T> value) numberTooLarge,
@@ -61,6 +65,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(MinimumLength<T> value)? minimumLength,
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -71,6 +76,7 @@ mixin _$ValueFailure<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(MinimumLength<T> value)? minimumLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -196,6 +202,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue, int min) minimumLength,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue, num max) numberTooLarge,
@@ -209,6 +216,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue, int min)? minimumLength,
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue, num max)? numberTooLarge,
@@ -222,6 +230,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue, int min)? minimumLength,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue, num max)? numberTooLarge,
@@ -239,6 +248,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(MinimumLength<T> value) minimumLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(NumberTooLarge<T> value) numberTooLarge,
@@ -252,6 +262,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(MinimumLength<T> value)? minimumLength,
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -265,6 +276,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(MinimumLength<T> value)? minimumLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -290,6 +302,187 @@ abstract class ExceedingLength<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   _$$ExceedingLengthImplCopyWith<T, _$ExceedingLengthImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MinimumLengthImplCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$MinimumLengthImplCopyWith(_$MinimumLengthImpl<T> value,
+          $Res Function(_$MinimumLengthImpl<T>) then) =
+      __$$MinimumLengthImplCopyWithImpl<T, $Res>;
+  @override
+  @useResult
+  $Res call({T failedValue, int min});
+}
+
+/// @nodoc
+class __$$MinimumLengthImplCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$MinimumLengthImpl<T>>
+    implements _$$MinimumLengthImplCopyWith<T, $Res> {
+  __$$MinimumLengthImplCopyWithImpl(_$MinimumLengthImpl<T> _value,
+      $Res Function(_$MinimumLengthImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? min = null,
+  }) {
+    return _then(_$MinimumLengthImpl<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+      min: null == min
+          ? _value.min
+          : min // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MinimumLengthImpl<T> implements MinimumLength<T> {
+  const _$MinimumLengthImpl({required this.failedValue, required this.min});
+
+  @override
+  final T failedValue;
+  @override
+  final int min;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.minimumLength(failedValue: $failedValue, min: $min)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MinimumLengthImpl<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            (identical(other.min, min) || other.min == min));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue), min);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MinimumLengthImplCopyWith<T, _$MinimumLengthImpl<T>> get copyWith =>
+      __$$MinimumLengthImplCopyWithImpl<T, _$MinimumLengthImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue, int min) minimumLength,
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue) multiline,
+    required TResult Function(T failedValue, num max) numberTooLarge,
+    required TResult Function(T failedValue, int max) listTooLong,
+    required TResult Function(T failedValue) invalidDate,
+  }) {
+    return minimumLength(failedValue, min);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue, int min)? minimumLength,
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue)? multiline,
+    TResult? Function(T failedValue, num max)? numberTooLarge,
+    TResult? Function(T failedValue, int max)? listTooLong,
+    TResult? Function(T failedValue)? invalidDate,
+  }) {
+    return minimumLength?.call(failedValue, min);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue, int min)? minimumLength,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue, num max)? numberTooLarge,
+    TResult Function(T failedValue, int max)? listTooLong,
+    TResult Function(T failedValue)? invalidDate,
+    required TResult orElse(),
+  }) {
+    if (minimumLength != null) {
+      return minimumLength(failedValue, min);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(MinimumLength<T> value) minimumLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(Multiline<T> value) multiline,
+    required TResult Function(NumberTooLarge<T> value) numberTooLarge,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+  }) {
+    return minimumLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(MinimumLength<T> value)? minimumLength,
+    TResult? Function(Empty<T> value)? empty,
+    TResult? Function(Multiline<T> value)? multiline,
+    TResult? Function(NumberTooLarge<T> value)? numberTooLarge,
+    TResult? Function(ListTooLong<T> value)? listTooLong,
+    TResult? Function(InvalidDate<T> value)? invalidDate,
+  }) {
+    return minimumLength?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(MinimumLength<T> value)? minimumLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(NumberTooLarge<T> value)? numberTooLarge,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    required TResult orElse(),
+  }) {
+    if (minimumLength != null) {
+      return minimumLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MinimumLength<T> implements ValueFailure<T> {
+  const factory MinimumLength(
+      {required final T failedValue,
+      required final int min}) = _$MinimumLengthImpl<T>;
+
+  @override
+  T get failedValue;
+  int get min;
+  @override
+  @JsonKey(ignore: true)
+  _$$MinimumLengthImplCopyWith<T, _$MinimumLengthImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -362,6 +555,7 @@ class _$EmptyImpl<T> implements Empty<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue, int min) minimumLength,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue, num max) numberTooLarge,
@@ -375,6 +569,7 @@ class _$EmptyImpl<T> implements Empty<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue, int min)? minimumLength,
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue, num max)? numberTooLarge,
@@ -388,6 +583,7 @@ class _$EmptyImpl<T> implements Empty<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue, int min)? minimumLength,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue, num max)? numberTooLarge,
@@ -405,6 +601,7 @@ class _$EmptyImpl<T> implements Empty<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(MinimumLength<T> value) minimumLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(NumberTooLarge<T> value) numberTooLarge,
@@ -418,6 +615,7 @@ class _$EmptyImpl<T> implements Empty<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(MinimumLength<T> value)? minimumLength,
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -431,6 +629,7 @@ class _$EmptyImpl<T> implements Empty<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(MinimumLength<T> value)? minimumLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -525,6 +724,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue, int min) minimumLength,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue, num max) numberTooLarge,
@@ -538,6 +738,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue, int min)? minimumLength,
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue, num max)? numberTooLarge,
@@ -551,6 +752,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue, int min)? minimumLength,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue, num max)? numberTooLarge,
@@ -568,6 +770,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(MinimumLength<T> value) minimumLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(NumberTooLarge<T> value) numberTooLarge,
@@ -581,6 +784,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(MinimumLength<T> value)? minimumLength,
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -594,6 +798,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(MinimumLength<T> value)? minimumLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -697,6 +902,7 @@ class _$NumberTooLargeImpl<T> implements NumberTooLarge<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue, int min) minimumLength,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue, num max) numberTooLarge,
@@ -710,6 +916,7 @@ class _$NumberTooLargeImpl<T> implements NumberTooLarge<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue, int min)? minimumLength,
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue, num max)? numberTooLarge,
@@ -723,6 +930,7 @@ class _$NumberTooLargeImpl<T> implements NumberTooLarge<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue, int min)? minimumLength,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue, num max)? numberTooLarge,
@@ -740,6 +948,7 @@ class _$NumberTooLargeImpl<T> implements NumberTooLarge<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(MinimumLength<T> value) minimumLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(NumberTooLarge<T> value) numberTooLarge,
@@ -753,6 +962,7 @@ class _$NumberTooLargeImpl<T> implements NumberTooLarge<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(MinimumLength<T> value)? minimumLength,
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -766,6 +976,7 @@ class _$NumberTooLargeImpl<T> implements NumberTooLarge<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(MinimumLength<T> value)? minimumLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -872,6 +1083,7 @@ class _$ListTooLongImpl<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue, int min) minimumLength,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue, num max) numberTooLarge,
@@ -885,6 +1097,7 @@ class _$ListTooLongImpl<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue, int min)? minimumLength,
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue, num max)? numberTooLarge,
@@ -898,6 +1111,7 @@ class _$ListTooLongImpl<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue, int min)? minimumLength,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue, num max)? numberTooLarge,
@@ -915,6 +1129,7 @@ class _$ListTooLongImpl<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(MinimumLength<T> value) minimumLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(NumberTooLarge<T> value) numberTooLarge,
@@ -928,6 +1143,7 @@ class _$ListTooLongImpl<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(MinimumLength<T> value)? minimumLength,
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -941,6 +1157,7 @@ class _$ListTooLongImpl<T> implements ListTooLong<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(MinimumLength<T> value)? minimumLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -1039,6 +1256,7 @@ class _$InvalidDateImpl<T> implements InvalidDate<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue, int min) minimumLength,
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue, num max) numberTooLarge,
@@ -1052,6 +1270,7 @@ class _$InvalidDateImpl<T> implements InvalidDate<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue, int min)? minimumLength,
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue, num max)? numberTooLarge,
@@ -1065,6 +1284,7 @@ class _$InvalidDateImpl<T> implements InvalidDate<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue, int min)? minimumLength,
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue, num max)? numberTooLarge,
@@ -1082,6 +1302,7 @@ class _$InvalidDateImpl<T> implements InvalidDate<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(MinimumLength<T> value) minimumLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(NumberTooLarge<T> value) numberTooLarge,
@@ -1095,6 +1316,7 @@ class _$InvalidDateImpl<T> implements InvalidDate<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(MinimumLength<T> value)? minimumLength,
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(NumberTooLarge<T> value)? numberTooLarge,
@@ -1108,6 +1330,7 @@ class _$InvalidDateImpl<T> implements InvalidDate<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(MinimumLength<T> value)? minimumLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(NumberTooLarge<T> value)? numberTooLarge,

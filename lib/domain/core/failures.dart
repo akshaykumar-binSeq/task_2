@@ -8,6 +8,10 @@ class ValueFailure<T> with _$ValueFailure<T> {
     required T failedValue,
     required int max,
   }) = ExceedingLength<T>;
+  const factory ValueFailure.minimumLength({
+    required T failedValue,
+    required int min,
+  }) = MinimumLength<T>;
   const factory ValueFailure.empty({
     required T failedValue,
   }) = Empty<T>;

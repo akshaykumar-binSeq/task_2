@@ -58,19 +58,19 @@ class StringSingleLine extends ValueObject<String> {
   const StringSingleLine._(this.value);
 }
 
-class Title extends ValueObject<String> {
+class TicketTitle extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
   static const maxLength = 50;
 
-  factory Title(String input) {
-    return Title._(
+  factory TicketTitle(String input) {
+    return TicketTitle._(
       validateMaxStringLength(input, maxLength).flatMap(validateStringNotEmpty),
     );
   }
 
-  const Title._(this.value);
+  const TicketTitle._(this.value);
 }
 
 class Description extends ValueObject<String> {

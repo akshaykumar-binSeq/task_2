@@ -41,7 +41,7 @@ abstract class TicketDto with _$TicketDto {
   Ticket toDomain() {
     return Ticket(
       id: id,
-      title: Title(title),
+      title: TicketTitle(title),
       description: Description(description),
       location: StringSingleLine(location),
       createdAt: DateToday(createdAt),
