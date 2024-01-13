@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -95,23 +96,45 @@ class CreateTicketFormState extends ConsumerState<CreateTicketForm> {
                 decoration: const InputDecoration(labelText: 'Date'),
               ),
               const SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () async {
-                  FilePickerResult? result =
-                      await FilePicker.platform.pickFiles();
+              file != null
+                  ? Row(
+                      children: [
+                        Text(
+                          file!.path.split('/').last,
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              file = null;
 
-                  if (result != null) {
-                    file = File(result.files.single.path!);
-                    setState(() {});
-                  } else {
-                    // User canceled the picker
-                  }
-                },
-                child: const Text('Add Attachment'),
-              ),
+                              setState(() {});
+                            },
+                            icon: const Icon(
+                              Icons.close,
+                              color: Colors.red,
+                            ))
+                      ],
+                    )
+                  : ElevatedButton(
+                      onPressed: () async {
+                        FilePickerResult? result =
+                            await FilePicker.platform.pickFiles();
+
+                        if (result != null) {
+                          file = File(result.files.single.path!);
+                          setState(() {});
+                        } else {
+                          // User canceled the picker
+                        }
+                      },
+                      child: const Text('Add Attachment'),
+                    ),
               const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () async {
+                  FlushbarHelper.createLoading(
+                          message: 'Uploading',
+                          linearProgressIndicator: LinearProgressIndicator())
+                      .show(context);
                   await ref
                       .read(ticketProvider.notifier)
                       .createTicket(ticket, file);
