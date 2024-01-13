@@ -7,9 +7,12 @@ import 'package:task_2/domain/core/app_failures.dart';
 import 'package:task_2/domain/i_ticket_repository.dart';
 import 'package:task_2/domain/ticket.dart';
 import 'package:task_2/infrastructure/ticket_dto.dart';
+import 'package:task_2/push_notification/i_notification_repository.dart';
+import 'package:task_2/push_notification/notification_repository.dart';
 
 class TicketRepository implements ITicketRepository {
   late CollectionReference _ticketsCollection;
+  INotificationRepository notificationRepository = NotificationRepository();
 
   TicketRepository() {
     _ticketsCollection = FirebaseFirestore.instance.collection('tickets');
@@ -37,6 +40,10 @@ class TicketRepository implements ITicketRepository {
           .doc('user_id')
           .collection('my_tickets')
           .add(ticketDto.toJson());
+      try {
+        notificationRepository.sendFCMMessage('Ticket Created',
+            'New Ticket has be created with title ${ticket.title}');
+      } catch (e) {}
       return right(unit);
     } catch (e) {
       return handleException(e);

@@ -41,7 +41,6 @@ class TicketScreenState extends ConsumerState<TicketScreen> {
       loading: (_) => const Center(child: CircularProgressIndicator()),
       loaded: (loaded) => _buildTicketList(loaded.tickets),
       failure: (failure) {
-        // Handle failure, maybe show an error message
         return Center(child: Text('Error: ${failure.toString()}'));
       },
     );

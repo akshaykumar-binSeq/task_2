@@ -19,6 +19,8 @@ dependencies:
   flutter_riverpod: ^2.4.9
   file_picker: ^6.1.1
   another_flushbar: ^1.12.30
+  firebase_messaging: ^14.7.10
+  flutter_local_notifications: ^16.3.0
 
 dev_dependencies:
   flutter_test:

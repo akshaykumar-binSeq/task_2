@@ -1,18 +1,24 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dartz/dartz.dart';
 import 'package:task_2/domain/core/app_failures.dart';
 import 'package:task_2/domain/ticket.dart';
 import 'package:task_2/domain/i_ticket_repository.dart';
+import 'package:task_2/push_notification/i_notification_repository.dart';
+import 'package:task_2/push_notification/notification_repository.dart';
 
 import '../infrastructure/ticket_repository.dart';
 import 'ticket_state.dart';
 
 class TicketProvider extends StateNotifier<TicketState> {
   final ITicketRepository _repository;
+  final INotificationRepository _notificationRepository;
 
-  TicketProvider(this._repository) : super(const TicketState.initial());
+  TicketProvider(this._repository, this._notificationRepository)
+      : super(const TicketState.initial());
 
   Future<void> _performAction(
       Future<Either<AppFailures, Unit>> Function() action) async {
@@ -50,8 +56,24 @@ class TicketProvider extends StateNotifier<TicketState> {
       (tickets) => TicketState.loaded(tickets),
     );
   }
+
+  Future<void> setPushNotification() async {
+    String getPlatformName(TargetPlatform platform) {
+      switch (platform) {
+        case TargetPlatform.android:
+          return 'android';
+        case TargetPlatform.iOS:
+          return 'ios';
+        default:
+          return 'Unknown';
+      }
+    }
+
+    await _notificationRepository
+        .registerDeviceNotification(getPlatformName(defaultTargetPlatform));
+  }
 }
 
 final ticketProvider = StateNotifierProvider<TicketProvider, TicketState>(
-  (ref) => TicketProvider(TicketRepository()),
+  (ref) => TicketProvider(TicketRepository(), NotificationRepository()),
 );
