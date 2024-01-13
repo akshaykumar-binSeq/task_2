@@ -104,7 +104,7 @@ class TicketScreenState extends ConsumerState<TicketScreen> {
                               ),
                             ),
                             Text(
-                              ticket.location.getOrElse('').split('T').first,
+                              ticket.location.getOrElse(''),
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
