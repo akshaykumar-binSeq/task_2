@@ -42,7 +42,7 @@ class TicketRepository implements ITicketRepository {
           .add(ticketDto.toJson());
       try {
         notificationRepository.sendFCMMessage('Ticket Created',
-            'New Ticket has be created with title ${ticket.title}');
+            'New Ticket has be created with title ${ticket.title.value.getOrElse(() => '')}');
       } catch (e) {
         null;
       }

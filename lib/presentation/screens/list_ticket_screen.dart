@@ -91,6 +91,29 @@ class TicketScreenState extends ConsumerState<TicketScreen> {
                         ),
                       ),
 
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Location: ',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              ticket.location.getOrElse('').split('T').first,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
                       if (ticket.attachment != '') ...[
                         const SizedBox(
                           height: 16,
