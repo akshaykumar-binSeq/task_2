@@ -92,7 +92,7 @@ class TicketScreenState extends ConsumerState<TicketScreen> {
                       ),
 
                       if (ticket.attachment != '') ...[
-                        SizedBox(
+                        const SizedBox(
                           height: 16,
                         ),
                         InkWell(

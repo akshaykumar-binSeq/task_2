@@ -104,7 +104,6 @@ class MessagingService {
             channel.id,
             channel.name,
             channelDescription: channel.description,
-            // TODO add a proper drawable resource to android,
             icon: "@mipmap/ic_launcher",
           ),
         ),

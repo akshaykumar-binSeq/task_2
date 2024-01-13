@@ -133,7 +133,8 @@ class CreateTicketFormState extends ConsumerState<CreateTicketForm> {
                 onPressed: () async {
                   FlushbarHelper.createLoading(
                           message: 'Uploading',
-                          linearProgressIndicator: LinearProgressIndicator())
+                          linearProgressIndicator:
+                              const LinearProgressIndicator())
                       .show(context);
                   await ref
                       .read(ticketProvider.notifier)

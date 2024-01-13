@@ -43,7 +43,9 @@ class TicketRepository implements ITicketRepository {
       try {
         notificationRepository.sendFCMMessage('Ticket Created',
             'New Ticket has be created with title ${ticket.title}');
-      } catch (e) {}
+      } catch (e) {
+        null;
+      }
       return right(unit);
     } catch (e) {
       return handleException(e);

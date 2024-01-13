@@ -1,3 +1,5 @@
+// ignore_for_file: unused_catch_stack
+
 import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
@@ -9,7 +11,7 @@ import 'package:task_2/push_notification/fcm_token_cache.dart';
 import 'i_notification_repository.dart';
 
 class NotificationRepository implements INotificationRepository {
-  NotificationRepository() {}
+  NotificationRepository();
 
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
 
@@ -31,7 +33,6 @@ class NotificationRepository implements INotificationRepository {
 
   @override
   Future<bool> sendFCMMessage(String title, String message) async {
-    print(FCMToken.fcmToken);
     try {
       var url = 'https://fcm.googleapis.com/fcm/send';
       var header = {
@@ -53,10 +54,10 @@ class NotificationRepository implements INotificationRepository {
       var response = await http.post(Uri.parse(url),
           headers: header, body: json.encode(request));
 
-      print(response.body);
+      response;
+
       return true;
     } catch (e, s) {
-      print(e);
       return false;
     }
   }
